@@ -15,11 +15,11 @@ rl.on('line', function(line) {
     let answer = ""
 
     for (let i = 0; i < alpha.length; i++) {
-         result += input.replace(alpha[i], 'a')
+         input = input.replace(alpha[i], 'a')
 
     }
 
-    console.log(result);
+    console.log(input);
 
    
     process.exit();
