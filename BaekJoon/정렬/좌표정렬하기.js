@@ -26,12 +26,5 @@ rl.on("line", function (line) {
     }).forEach(el => {
         result += `${el[0]} ${el[1]}\n`
     })
-    
-
     console.log(result);
-    
-
-    
-
-    
 });

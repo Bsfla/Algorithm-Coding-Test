@@ -16,5 +16,14 @@ rl.on("line", function (line) {
     for( let i = 0; i < N; i++) {
         count[list[i]] = 0;
     }
-    console.log(count);
+
+    for (let i = 0; i < N; i++) {
+        count[list[i]]++;
+    }
+
+    for (let i = 0; i < N; i++) {
+        for (let j = 0; j < count[i]; j++) {
+            console.log(i);
+        }
+    }
 })
