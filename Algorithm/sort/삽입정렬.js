@@ -1,13 +1,17 @@
 function insertionSort(array) {
-    for (let i = 0; i < array.length; i++) {
-        let cur = array[i];
-        let left = i - 1;
+    let cur = 0;
+    let left = 0;
 
-        while (left >= 0 && array[left] > cur) {
+    for (let i = 0; i < array.length; i++) {
+        cur = array[i];
+        left = i-1;
+
+        while(left >= 0 && array[left] > cur) {
             array[left + 1] = array[left];
             array[left] = cur;
             cur = array[left];
-            left--;
+            left--
+
         }
     }
     return array;

@@ -13,6 +13,5 @@ rl.on("line", function (line) {
     const sorted = input.sort((a, b) =>  a.length - b.length || a.localeCompare(b));
     const uniqueValues = new Set(sorted);
 
-
     console.log(Array.from(uniqueValues).join('\n'));
 });

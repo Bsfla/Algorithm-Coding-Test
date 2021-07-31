@@ -10,9 +10,6 @@ rl.on("line", function (line) {
     input.push(line); 
 }).on("close", function () { 
     const N = input.shift();
-    const location = input.map(coords =>
-        coords.split(' ').map(nums => parseInt(nums))
-      );
     let result = '';
     
     location.sort((a, b) => {
