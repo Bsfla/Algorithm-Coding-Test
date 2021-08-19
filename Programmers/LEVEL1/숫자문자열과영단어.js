@@ -12,7 +12,7 @@ function solution(s) {
                str = '';
            }
        }
-       else result += el;
+       else result += el
     })
     
     return Number(result);
