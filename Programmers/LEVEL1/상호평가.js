@@ -20,9 +20,11 @@ function solution(scores) {
        evaluation = [];
        sum = 0;
        del = false;
+       
        for (let j = 0; j < scores.length; j++) {
            evaluation.push(scores[j][i]);
        }
+       
        max = Math.max(...evaluation);
        min = Math.min(...evaluation);
       
@@ -32,7 +34,9 @@ function solution(scores) {
                del = true;
            } 
        }
+      
       sum = evaluation.reduce((a,b) => a + b);
+      
       if (del) avg.push(sum / (scores.length - 1));
       else avg.push(sum / scores.length);
      }
@@ -40,5 +44,6 @@ function solution(scores) {
      avg.forEach(el => {
          grade.push(rate(el));
      })
+     
      return grade.join('');
 }
