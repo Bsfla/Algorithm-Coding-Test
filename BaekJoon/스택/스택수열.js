@@ -9,32 +9,34 @@ const input = [];
 rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
-  const N = input[0];
-  const arr = [];
+  const N = parseInt(input.shift());
   const stack = [];
-  let answer = "";
-  let count = 0;
+  const sequence = [];
+
+  let result = [];
+  let count = 1;
 
   for (let i = 0; i < N; i++) {
-    arr[i] = i + 1;
+    sequence.push(parseInt(input[i]));
   }
 
-  for (let j = 1; j < N + 1; j++) {
-    count = 1;
-    while (count <= N && stack[stack.length - 1] != input[j]) {
-      stack.push(arr.shift());
-      answer += "+\n";
-      count++;
-    }
-    if (stack.length > 0 && stack[stack.length - 1] == input[j]) {
+  while (sequence.length !== 0) {
+    if (stack[stack.length - 1] === sequence[0]) {
+      sequence.shift();
       stack.pop();
-      answer += "-\n";
-      console.log(input[j]);
+      result.push("-");
     } else {
-      answer = "No";
+      stack.push(count);
+      count++;
+      result.push("+");
+    }
+
+    if (stack[stack.length - 1] > sequence[0]) {
+      result = [];
+      result.push("No");
       break;
     }
   }
 
-  console.log(answer);
+  console.log(result.join("\n"));
 });
