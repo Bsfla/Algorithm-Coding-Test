@@ -4,8 +4,7 @@ function solution(table, languages, preference) {
   const point = ["직업군", 5, 4, 3, 2, 1];
   const job = ["SI", "CONTENTS", "HARDWARE", "PORTAL", "GAME"];
   const total = [];
-  const indexarray = [];
-  const resultarray = [];
+  const recommend = [];
 
   let max = 0;
   let result = [];
@@ -28,12 +27,11 @@ function solution(table, languages, preference) {
 
   total.forEach((el, idx) => {
     if (el === max) {
-      indexarray.push(idx);
-      resultarray.push(job[idx]);
+      recommend.push(job[idx]);
     }
   });
 
-  resultarray.sort();
+  recommend.sort();
 
-  return resultarray[0];
+  return recommend[0];
 }
