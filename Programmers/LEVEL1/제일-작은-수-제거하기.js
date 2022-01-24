@@ -1,8 +1,4 @@
 function solution(arr) {
-   const min = Math.min(...arr);
-   const minIndex =  arr.indexOf(min);
-   
-   arr.splice(minIndex, 1);
-   if (arr.length < 1) arr.push(-1);
-   return arr;
+  const answer = arr.filter((el) => el !== Math.min(...arr));
+  return answer.length ? answer : [-1];
 }
