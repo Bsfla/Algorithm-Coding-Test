@@ -1,26 +1,25 @@
 function solution(n, lost, reserve) {
-    let haveNum = n - lost.length; 
+  const realReserve = reserve
+    .filter((el) => !lost.includes(el))
+    .sort((a, b) => a - b);
+  const realLost = lost
+    .filter((el) => !reserve.includes(el))
+    .sort((a, b) => a - b);
+  let studentHave = n - realLost.length;
+  let frontCheck = 0;
+  let behindCheck = 0;
 
-    for (let i = 0; i < lost.length; i++) {
-        if (reserve.indexOf(lost[i]) !== -1) {
-            reserve.splice(reserve.indexOf(lost[i]), 1);
-            lost.splice(i, 1);
-            haveNum ++;
-            i--;				
-        }
+  realLost.forEach((el, idx) => {
+    frontCheck = realReserve.indexOf(el - 1);
+    behindCheck = realReserve.indexOf(el + 1);
+
+    if (frontCheck !== -1) {
+      realReserve.splice(frontCheck, 1);
+      studentHave++;
+    } else if (behindCheck !== -1) {
+      realReserve.splice(behindCheck, 1);
+      studentHave++;
     }
-
-    for (let num of lost) {
-        let frontCheck = reserve.indexOf(num - 1)
-        let behindCheck = reserve.indexOf(num + 1)
-
-        if (frontCheck !== -1) {
-            reserve.splice(frontCheck, 1);
-            haveNum++;
-        } else if (behindCheck !== -1) {
-            reserve.splice(behindCheck, 1);
-            haveNum++;
-        }
-    }
-    return haveNum;
+  });
+  return studentHave;
 }
