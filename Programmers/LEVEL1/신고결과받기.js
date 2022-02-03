@@ -29,6 +29,8 @@ function solution(id_list, report, k) {
   return result;
 }
 
+//
+
 function solution(id_list, report, k) {
   const result = id_list.map((el) => (el = 0));
   const reportList = {};

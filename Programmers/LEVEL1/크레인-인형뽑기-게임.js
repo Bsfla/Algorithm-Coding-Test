@@ -18,3 +18,26 @@ function solution(boards, moves) {
      }
     return cnt;
 }
+
+function solution(boards, moves) {
+    const indexMoves = moves.map(el => el - 1);
+    const basket = [];
+    let count = 0;
+    
+    for (let move of indexMoves) {
+        for (let board of boards) {
+            if (board[move] !== 0) {
+                basket.push(board[move]);
+                if (basket[basket.length - 1] === basket[basket.length - 2]) {
+                    basket.pop();
+                    basket.pop();
+                    count += 2;
+                }
+                board[move] = 0;
+                break;
+            }
+        }
+    }
+   return count;
+   
+}
