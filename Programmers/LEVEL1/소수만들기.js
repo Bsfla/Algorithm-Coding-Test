@@ -19,6 +19,4 @@ function solution(nums) {
       }
     }
   }
-
-  return result;
 }
