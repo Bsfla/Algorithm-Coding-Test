@@ -9,16 +9,14 @@ let input = " ";
 rl.on("line", function (line) {
   input = line;
 }).on("close", function () {
-  const alpha = ["c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="];
-  let word = input;
+  const word = input.split(" ");
 
-  alpha.map((alphabet) => {
-    while (word.includes(alphabet)) {
-      word = word.replace(alphabet, "a");
-    }
-  });
+  console.log(
+    word.reduce((acc, bcc) => {
+      if (bcc !== "") acc += 1;
 
-  console.log(word.length);
-
+      return acc;
+    }, 0)
+  );
   process.exit();
 });

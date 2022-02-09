@@ -16,7 +16,7 @@ function solution(nums) {
       for (let k = j + 1; k < nums.length; k++) {
         sum = nums[i] + nums[j] + nums[k];
         if (isPrime(sum)) result += 1;
-      
+      }
     }
   }
 }
