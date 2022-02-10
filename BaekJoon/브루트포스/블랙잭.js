@@ -1,29 +1,30 @@
 const readline = require("readline");
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
+  input: process.stdin,
+  output: process.stdout,
 });
 
 let input = [];
 rl.on("line", function (line) {
-    input.push(line);
+  input.push(line);
 }).on("close", function () {
-    const [N, M] = input.shift().split(" ").map(Number);
-    const cardList = input.shift().split(" ").map(Number);
-    const length = cardList.length;
+  const [N, M] = input.shift().split(" ").map(Number);
+  const cardList = input.shift().split(" ").map(Number);
 
-    let  sum = 0;
-    let  max = 0;
+  let max = 0;
+  let sum = 0;
 
-    for (let i = 0; i < length; i++) {
-        for (let j = i + 1; j < length; j++) {
-            for (let k = j + 1; k < length; k++) {
-                sum = cardList[i] + cardList[j] + cardList[k];
-                if (sum > max && sum <= M) max = sum; 
-            }
+  for (let i = 0; i < N; i++) {
+    for (let j = i + 1; j < N; j++) {
+      for (let k = j + 1; k < N; k++) {
+        sum = cardList[i] + cardList[j] + cardList[k];
+        console.log(sum);
+        if (sum <= M) {
+          if (sum > max) max = sum;
         }
+      }
     }
-
-    console.log(max)
-    process.exit();
+  }
+  console.log(max);
+  process.exit();
 });

@@ -11,7 +11,6 @@ rl.on('line', function(line) {
 }).on('close', function() {
     const rest = [];
     let num = 0
-    let count = 0;
     
     input.forEach(el => {
         num = el % 42;
