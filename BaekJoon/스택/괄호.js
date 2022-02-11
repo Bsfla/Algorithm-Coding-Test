@@ -10,17 +10,13 @@ rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
   const N = parseInt(input.shift());
-
-  let cases = '';
-  let result = '';
-
+  let result = "";
   for (let i = 0; i < N; i++) {
-     const stack = [];
-     cases = input[i];
-     result = "YES";
+    const stack = [];
+    result = "YES";
 
-    for (let j = 0; j < cases.length; j++) {
-      if (cases[j] === "(") stack.push(1);
+    for (let j = 0; j < input[i].length; j++) {
+      if (input[i][j] === "(") stack.push("(");
       else {
         if (stack.length) stack.pop();
         else {
@@ -29,8 +25,7 @@ rl.on("line", function (line) {
         }
       }
     }
-    if (stack.length !== 0) result = "NO";
-
+    if (stack.length) result = "No";
     console.log(result);
   }
 });

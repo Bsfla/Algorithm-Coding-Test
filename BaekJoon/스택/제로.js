@@ -9,18 +9,15 @@ const input = [];
 rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
-  const N = input.shift();
-  const M = input.map((el) => parseInt(el));
+  const N = parseInt(input.shift());
+  const nums = input.map(Number);
   const stack = [];
 
   for (let i = 0; i < N; i++) {
-    if (M[i] === 0) {
-      stack.pop();
-    } else {
-      stack.push(M[i]);
-    }
+    if (nums[i] === 0) stack.pop();
+    else stack.push(nums[i]);
   }
 
-  if (stack.length) console.log(stack.reduce((acc, bcc) => acc + bcc));
+  if (stack.length) console.log(stack.reduce((acc, num) => acc + num));
   else console.log(0);
 });

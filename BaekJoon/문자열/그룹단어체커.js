@@ -11,15 +11,13 @@ rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
   const N = parseInt(input.shift());
-  let result = [];
   let count = 0;
-  let word = [];
-  let groupChecker = true;
+  
 
   for (let i = 0; i < N; i++) {
-    result = [];
-    word = input[i].split("");
-    grouptChecker = true;
+    const result = [];
+    const word = input[i].split("");
+    let groupChecker = true;
     word.map((el) => {
       if (result.indexOf(el) === -1) result.push(el);
       else {

@@ -18,7 +18,6 @@ rl.on("line", function (line) {
     for (let j = i + 1; j < N; j++) {
       for (let k = j + 1; k < N; k++) {
         sum = cardList[i] + cardList[j] + cardList[k];
-        console.log(sum);
         if (sum <= M) {
           if (sum > max) max = sum;
         }
