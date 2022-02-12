@@ -10,13 +10,14 @@ rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
   const N = parseInt(input.shift());
-  let result = "";
+  let result = '';
+
   for (let i = 0; i < N; i++) {
     const stack = [];
     result = "YES";
 
     for (let j = 0; j < input[i].length; j++) {
-      if (input[i][j] === "(") stack.push("(");
+      if (input[i][j] === "(") stack.push('(');
       else {
         if (stack.length) stack.pop();
         else {
@@ -25,7 +26,8 @@ rl.on("line", function (line) {
         }
       }
     }
-    if (stack.length) result = "No";
+    if (stack.length) result = "NO";
+
     console.log(result);
   }
 });
