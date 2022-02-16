@@ -11,5 +11,5 @@ rl.on("line", function (line) {
 }).on("close", function () {
   const number = input.filter((el) => el % 2 !== 0);
   const total = number.reduce((acc, bcc) => Number(acc) + Number(bcc));
-  const min = Math.min;
+  const min = Math.mi
 });
