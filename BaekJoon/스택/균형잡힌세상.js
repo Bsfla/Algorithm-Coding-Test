@@ -16,6 +16,7 @@ rl.on("line", function (line) {
     let cases = input[i];
 
     if (cases.length === 1 && cases[0] === ".") break;
+
     for (let j = 0; j < cases.length; j++) {
       if (cases[j] === "(") stack.push(cases[j]);
       else if (cases[j] === "[") stack.push(cases[j]);
@@ -27,7 +28,6 @@ rl.on("line", function (line) {
         else stack.push(cases[j]);
       }
     }
-
     if (stack.length === 0) result.push("yes");
     else result.push("no");
   }
