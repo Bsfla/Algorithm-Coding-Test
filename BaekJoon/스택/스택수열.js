@@ -18,22 +18,22 @@ rl.on("line", function (line) {
 
   for (let i = 0; i < N; i++) {
     sequence.push(parseInt(input[i]));
-  }
+  };
 
   while (sequence.length !== 0) {
-    if (stack[stack.length - 1] === sequence[0]) {
+    if (sequence[0] === stack[stack.length - 1]) {
       sequence.shift();
       stack.pop();
-      result.push("-");
+      result.push('-');
     } else {
       stack.push(count);
+      result.push('+');
       count++;
-      result.push("+");
     }
 
-    if (stack[stack.length - 1] > sequence[0]) {
+    if (sequence[0] < stack[stack.length - 1]) {
       result = [];
-      result.push("No");
+      result.push('No');
       break;
     }
   }

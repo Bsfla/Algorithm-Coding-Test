@@ -11,16 +11,17 @@ rl.on("line", (line) => {
 }).on("close", () => {
   input[0] = input[0].split(" ").map((el) => parseInt(el));
   const N = input[0];
-  const result = [];
+  let result = [];
   let words = input.slice(1);
+
   
-  for (let i = 0; i < words.length; i++) {
-      a = [];
-      words[i] = words[i].split(' ');
-      for (let j = 0; j < words[i].length; j++) {
-          a.push(words[i][j].split('').reverse().join(''));
-      }
-      console.log(a.join(' '));
+  for (let i = 0; i < N; i++) {
+    result = [];
+    words[i] = words[i].split(' '); 
+    for (let j = 0; j < words[i].length; j++) {
+       result.push(words[i][j].split('').reverse().join(''))
+    }
+    console.log(result.join(' '));
   }
 
 
