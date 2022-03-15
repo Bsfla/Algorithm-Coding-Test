@@ -33,7 +33,7 @@ rl.on("line", function (line) {
 
     if (sequence[0] < stack[stack.length - 1]) {
       result = [];
-      result.push('No');
+      result.push('NO');
       break;
     }
   }

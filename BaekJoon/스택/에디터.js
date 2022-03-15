@@ -1,4 +1,3 @@
-const { parse } = require("path");
 const readline = require("readline");
 const rl = readline.createInterface({
   input: process.stdin,
@@ -29,7 +28,7 @@ rl.on("line", function (line) {
   }
 
   while (right.length) {
-    left.push(right.shift());
+    left.push(right.pop());
   }
 
   console.log(left.join(""));

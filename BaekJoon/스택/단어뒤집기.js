@@ -23,8 +23,6 @@ rl.on("line", (line) => {
     }
     console.log(result.join(' '));
   }
-
-
 });
 
 
