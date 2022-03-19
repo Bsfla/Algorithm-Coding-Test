@@ -6,20 +6,26 @@
   </head>
   <body>
     <script>
-      function solution(sticks) {
-   const stack = [];
-   let razerCount = 0;
-
+  function solution(sticks) {
+   let stack = [];
+   let result = 0;
+   
    for (let i = 0; i < sticks.length; i++) {
-       stack.push(0);
-       if (sticks[i] === '(' && sticks[i + 1]) {
-           razerCount++;
-           console.log('d')
+       if (sticks[i] === '(') stack.push(sticks[i]);
+       else {
+           if (sticks[i - 1] === '(') {
+               stack.pop();
+               result += stack.length;
+           } else {
+               result += 1;
+               stack.pop();
+           }
        }
    }
-   console.log(stack);
-}
-    solution('(((()(()()))(())()))(()())');
+
+   return result;
+  }
+    console.log(solution('()(((()())(())()))(())'));
     </script>
   </body>
 </html>
