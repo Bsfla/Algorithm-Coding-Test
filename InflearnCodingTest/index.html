@@ -6,26 +6,23 @@
   </head>
   <body>
     <script>
-  function solution(sticks) {
-   let stack = [];
-   let result = 0;
-   
-   for (let i = 0; i < sticks.length; i++) {
-       if (sticks[i] === '(') stack.push(sticks[i]);
-       else {
-           if (sticks[i - 1] === '(') {
-               stack.pop();
-               result += stack.length;
-           } else {
-               result += 1;
-               stack.pop();
-           }
-       }
-   }
+ function solution(sequence, schedule) {
+    const que = sequence.split('');
+    let answer = '';
+    let result = '';
+    
+    for (let i = 0; i < schedule.length; i++)  {
+        if (que.includes(schedule[i])) {
+          if (!schedule[i] === que.shift()) return 'NO'
+        }
+    }
 
-   return result;
-  }
-    console.log(solution('()(((()())(())()))(())'));
+    if (que.length) return 'NO';
+    
+    return 'YES'
+    
+}
+    console.log(solution('CBA', 'CABAGE'));
     </script>
   </body>
 </html>

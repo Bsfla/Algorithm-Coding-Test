@@ -1,13 +1,20 @@
 function solution(sticks) {
-   const stack = [];
-   let razerCount = 0;
-
-   for (let stick of sticks) {
-       stack.push(stick);
-       if (stack[stack.length - 1] === ')' && stack[stack.length - 2] === '(') {
-           razerCount++;
-           stack.pop();
-           stack.pop();
+   let stack = [];
+   let result = 0;
+   
+   for (let i = 0; i < sticks.length; i++) {
+       if (sticks[i] === '(') stack.push(sticks[i]);
+       else {
+           if (sticks[i - 1] === '(') {
+               stack.pop();
+               result += stack.length;
+           } else {
+               result += 1;
+               stack.pop();
+           }
        }
    }
+
+   return result;
+   
 }
