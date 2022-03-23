@@ -10,5 +10,4 @@ rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
   const number = input.filter((el) => el % 2 !== 0);
-  const total = nu
 }
