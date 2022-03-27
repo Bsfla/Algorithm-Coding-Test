@@ -8,6 +8,6 @@ const input = [];
 
 rl.on("line", function (line) {
   input.push(line);
-}).on("close", function () {
+}).on("close", function ()
   const number = input.filter((el) => el % 2 !==
 }
