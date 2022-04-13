@@ -9,5 +9,5 @@ const input = [];
 rl.on("line", function (line) {
   input.push(line);
 }).on("close", functio
-  const number = input.filter
+  const number = input.filte
 }
