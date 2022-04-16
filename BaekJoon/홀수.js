@@ -8,6 +8,6 @@ const input = [];
 
 rl.on("line", function (line) {
   input.push(line);
-}).on("close", funct
+}).on("close", func
   const number = input.filt
 }
