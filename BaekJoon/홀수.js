@@ -9,5 +9,5 @@ const input = [];
 rl.on("line", function (line) {
   input.push(line);
 }).on("close", 
-  const numb
+  const num
 }
