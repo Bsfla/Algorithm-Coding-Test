@@ -8,5 +8,5 @@ const input = [];
 
 rl.on("line", function (line) {
   input.push(line);
-}).on("close
+}).on("cl
 }
