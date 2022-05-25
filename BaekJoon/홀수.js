@@ -6,7 +6,6 @@ const rl = readline.createInterface({
 
 const input = [];
 
-rl.on("line", function (line) {
-  i
+rl.on("line", function (line)
 }
 }
