@@ -6,6 +6,6 @@ const rl = readline.createInterface({
 
 const input = [];
 
-rl.o
+rl
 }
 }
