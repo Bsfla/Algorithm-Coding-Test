@@ -4,7 +4,7 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-const input = 
+const inpu
 
 
 }
