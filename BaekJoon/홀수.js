@@ -4,5 +4,5 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
-cons
+co
 }
