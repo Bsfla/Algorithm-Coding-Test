@@ -12,8 +12,6 @@ function solution(sizes) {
      }
      
      return Math.max(...w) * Math.max(...h);
-    
-    
  }
 
  function solution(sizes) {
