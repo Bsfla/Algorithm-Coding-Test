@@ -4,5 +4,5 @@ const rl = readline.createInterface({
   output: p
 });
 
-co
+
 }
