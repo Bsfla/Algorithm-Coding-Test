@@ -1,4 +1,4 @@
 const readline = require("readline");
 const rl = readline.createInterface({
-  input: pro
+  input: p
 }
