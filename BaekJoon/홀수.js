@@ -1,4 +1,3 @@
 const readline = require("readline");
-const rl = readline.createInterface({
-  in
+const rl = readline.createInterface(
 }
