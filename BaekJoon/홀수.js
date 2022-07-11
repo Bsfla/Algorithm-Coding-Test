@@ -1,3 +1,3 @@
 const readline = require("readline");
-const rl = readline.createInterfa
+const rl = readline.createInter
 }
