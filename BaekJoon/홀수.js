@@ -1,3 +1,3 @@
 const readline = require("readline");
-const rl = readline.createIn
+const rl = readline.cre
 }
