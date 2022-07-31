@@ -1,1 +1,1 @@
-const readline = require(
+const readline = requir
