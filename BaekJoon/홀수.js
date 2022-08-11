@@ -1,1 +1,1 @@
-const readline = sf;
+const readline = s
