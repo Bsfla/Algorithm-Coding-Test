@@ -1,1 +1,1 @@
-const readline = s
+const readlin
