@@ -1,1 +1,1 @@
-const readlin
+const readl
