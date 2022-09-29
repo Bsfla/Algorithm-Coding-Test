@@ -51,3 +51,20 @@ function solution(n, arr1, arr2) {
       .join("");
   });
 }
+
+function solution(n, arr1, arr2) {
+  const maps = arr1.map((element, index) => {
+    const map = (element | arr2[index]).toString(2);
+    return map.padStart(n, "0");
+  });
+
+  return maps.map((map) => {
+    return map
+      .split("")
+      .map((password) => {
+        if (password === "1") return "#";
+        else return " ";
+      })
+      .join("");
+  });
+}
