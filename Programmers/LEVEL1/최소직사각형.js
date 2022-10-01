@@ -29,3 +29,10 @@ function solution(sizes) {
     return w * h;
     
  }
+
+ function solution(sizes) {
+    const w = sizes.map(size => Math.max(...size));
+    const h = sizes.map(size => Math.min(...size));
+    
+    return Math.max(...w) * Math.max(...h);
+ }

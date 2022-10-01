@@ -1,25 +1,45 @@
 function solution(s, n) {
-    const replaceNumber = [];
+    const result = [];
+    const alphabets = s.split('');
     
-    let answer = [];
-    let ascciNumber = 0;
-    let sum = 0;
+    alphabets.forEach((alphabet, index) => {
+        const asciiNumber = s.charCodeAt(index);
+        const replaceNumber = asciiNumber + n;
+        
+        if (asciiNumber >= 65 && asciiNumber < 91) {
+            if (replaceNumber > 90) result.push(replaceNumber - 26);
+            else result.push(replaceNumber);
+        } else if (asciiNumber >= 97 && asciiNumber < 123) {
+             if (replaceNumber > 122) result.push(replaceNumber - 26);
+            else result.push(replaceNumber);
+        } else result.push(asciiNumber);
+        
+    })
     
-    for (let i = 0; i < s.length; i++) {
-        ascciNumber = s.charCodeAt(i);
-        sum = ascciNumber + n;
-        if (65 <= ascciNumber && ascciNumber <= 90) {
-            if (sum >= 91) {
-                replaceNumber.push(sum - 26);
-            } else replaceNumber.push(sum);
-        } else if (97 <= ascciNumber && ascciNumber <= 122) {
-            if (sum >= 123) {
-                replaceNumber.push(sum - 26);
-            } else replaceNumber.push(sum);
-        } else replaceNumber.push(ascciNumber);
-    }
-    
-    answer = replaceNumber.map(el => String.fromCharCode(el));
-    
-    return answer.join('');
+   return result.map(el => String.fromCharCode(el)).join('')
 }
+
+/*
+아스키 안쓴 풀이 
+
+function solution(s, n) {
+    const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lower = "abcdefghijklmnopqrstuvwxyz";
+    const answer= '';
+
+    for (var i = 0; i <s.length; i++){
+        const text = s[i];
+        if (text == ' ') {
+            answer += ' '; 
+            continue;
+        }
+        const textArr = upper.includes(text) ? upper : lower;
+        let index = textArr.indexOf(text)+n;
+        if (index >= textArr.length) index -= textArr.length;
+        answer += textArr[index];
+    }
+    return answer;
+}
+
+*/
+
