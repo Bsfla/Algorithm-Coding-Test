@@ -1,2 +1,2 @@
 const siis
-conㄴㄴ
+const 1
