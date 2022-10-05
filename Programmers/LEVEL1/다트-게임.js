@@ -19,3 +19,29 @@ function solution(dartResult) {
   }
   return result.reduce((acc, bcc) => acc + bcc);
 }
+
+function solution(dartResult) {
+  const result = [];
+
+  dartResult.split("").forEach((el) => {
+    if (!isNaN(el)) {
+      if (el === "0" && result[result.length - 1] === 1) {
+        result.pop();
+        result.push(10);
+      } else result.push(Number(el));
+    } else if (el === "S")
+      result[result.length - 1] = Math.pow(result[result.length - 1], 1);
+    else if (el === "D")
+      result[result.length - 1] = Math.pow(result[result.length - 1], 2);
+    else if (el === "T")
+      result[result.length - 1] = Math.pow(result[result.length - 1], 3);
+    else if (el === "*") {
+      result[result.length - 2] *= 2;
+      result[result.length - 1] *= 2;
+    } else if (el === "#") {
+      result[result.length - 1] *= -1;
+    }
+  });
+
+  return result.reduce((prev, cur) => prev + cur);
+}
