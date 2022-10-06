@@ -42,3 +42,20 @@ function solution(N, stages) {
     })
     .map((el) => el.num);
 }
+
+function solution(N, stages) {
+  const failureRate = [];
+  let userCount = stages.length;
+  
+  for (let i = 1; i < N + 1; i++) {
+      const failUserCount = stages.filter(user => {
+          return user === i;
+      }).length;
+      
+      failureRate.push({stage: i, rate: failUserCount / userCount});
+      userCount -= failUserCount;
+  }
+   
+ return failureRate.sort((a, b) => b.rate - a.rate).map(el => el.stage);
+  
+}
