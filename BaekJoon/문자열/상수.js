@@ -1,20 +1,22 @@
-const readline = require('readline');
+const readline = require("readline");
 const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout
+  input: process.stdin,
+  output: process.stdout,
 });
 
 let input = " ";
 
-rl.on('line', function(line) {
-    input = line;
-}).on('close', function() {
-    const str = input.split(' ').map(value => String(value));
-    const firstNum = str[0].split("").reverse().join("");
-    const secondNum = str[1].split("").reverse().join("");
+rl.on("line", function (line) {
+  input = line;
+}).on("close", function () {
+  const [firstNum, secondNum] = input.split(" ");
+  const firstReverseNum = String(firstNum).split("").reverse().join("");
+  const secondReverseNum = String(secondNum).split("").reverse().join("");
 
-    if (Number(firstNum) < Number(secondNum)) console.log(secondNum);
-    else console.log(firstNum)
-
-    process.exit();
+  console.log(
+    firstReverseNum > secondReverseNum
+      ? parseInt(firstReverseNum)
+      : parseInt(secondReverseNum)
+  );
+  process.exit();
 });

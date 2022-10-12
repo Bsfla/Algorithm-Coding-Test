@@ -10,15 +10,16 @@ rl.on("line", function (line) {
   input = line;
 }).on("close", function () {
   const alpha = ["c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="];
-  let word = input;
+  let words = input;
 
-  alpha.map((alphabet) => {
-    while (word.includes(alphabet)) {
-      word = word.replace(alphabet, "a");
+  alpha.forEach((alphabet) => {
+    if (words.includes(alphabet)) {
+      const regexAllCase = new RegExp(alphabet, "gi");
+      words = words.replace(regexAllCase, "a");
     }
   });
 
-  console.log(word.length);
+  console.log(words.length);
 
   process.exit();
 });

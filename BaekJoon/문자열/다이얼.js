@@ -9,16 +9,27 @@ let input = " ";
 rl.on("line", function (line) {
   input = line;
 }).on("close", function () {
-  const dial = ["ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"];
-  let answer = 0;
+  const dials = {
+    ABC: 3,
+    DEF: 4,
+    GHI: 5,
+    JKL: 6,
+    MNO: 7,
+    PQRS: 8,
+    TUV: 9,
+    WXYZ: 10,
+  };
+  const dialWords = ["ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"];
+  const words = input.split("");
 
-  for (let i = 0; i < dial.length; i++) {
-    for (let j = 0; j < input.length; j++) {
-      if (dial[i].split("").includes(input[j])) answer += i + 3;
-    }
-  }
+  const results = words.reduce((acc, curr) => {
+    dialWords.forEach((dialWord) => {
+      if (dialWord.split("").includes(curr)) acc += dials[dialWord];
+    });
+    return acc;
+  }, 0);
 
-  console.log(answer);
+  console.log(results);
 
   process.exit();
 });

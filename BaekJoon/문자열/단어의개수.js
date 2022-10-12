@@ -9,12 +9,11 @@ let input = " ";
 rl.on("line", function (line) {
   input = line;
 }).on("close", function () {
-  const word = input.split(" ");
+  const str = input.split(" ");
 
   console.log(
-    word.reduce((acc, bcc) => {
-      if (bcc !== "") acc += 1;
-
+    str.reduce((acc, curr) => {
+      if (curr !== " ") acc += 1;
       return acc;
     }, 0)
   );

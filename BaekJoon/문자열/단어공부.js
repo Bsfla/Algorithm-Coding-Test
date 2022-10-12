@@ -11,21 +11,21 @@ rl.on("line", function (line) {
 }).on("close", function () {
   const word = input.toUpperCase();
   const obj = {};
-  const answer = [];
-  let max = 0;
+  const result = [];
+  let maxCount = 0;
 
-  for (let alpha of word) {
-    if (obj[alpha]) obj[alpha] += 1;
-    else obj[alpha] = 1;
-  }
+  word.split("").forEach((alphabet) => {
+    if (alphabet in obj) obj[alphabet] += 1;
+    else obj[alphabet] = 1;
+  });
 
-  max = Math.max(...Object.values(obj));
+  maxCount = Math.max(...Object.values(obj));
 
   for (let key in obj) {
-    if (obj[key] === max) answer.push(key);
+    if (obj[key] === maxCount) result.push(key);
   }
 
-  answer.length === 1 ? console.log(answer[0]) : console.log("?");
+  console.log(result.length === 1 ? result[0] : "?");
 
   process.exit();
 });
