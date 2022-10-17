@@ -9,18 +9,20 @@ const input = [];
 rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
-  const arr = input.map((el) => Number(el));
-  const sum = arr.reduce((acc, bcc) => acc + bcc);
-  const diff = sum - 100;
+  const dwarfs = input.map(Number).sort((a, b) => a - b);
+  const sum = dwarfs.reduce((acc, curr) => acc + curr);
+  const notDwarf = sum - 100;
 
-  for (let i = 0; i < 9; i++) {
-    for (let j = i + 1; j < 9; j++) {
-      if (diff === arr[i] + arr[j]) {
-        arr.splice(i, 1);
-        arr.splice(j - 1, 1);
+  for (let i = 0; i < dwarfs.length; i++) {
+    for (let j = i + 1; j < dwarfs.length; j++) {
+      if (dwarfs[i] + dwarfs[j] === notDwarf) {
+        dwarfs.splice(i, 1);
+        dwarfs.splice(j - 1, 1);
+
+        console.log(dwarfs.join("\n"));
+
+        return;
       }
     }
   }
-
-  console.log(arr.sort((a, b) => a - b).join("\n"));
 });

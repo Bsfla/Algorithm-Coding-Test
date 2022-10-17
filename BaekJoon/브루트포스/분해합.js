@@ -10,20 +10,24 @@ rl.on("line", function (line) {
 }).on("close", function () {
   const N = Number(input);
   let sum = 0;
+  let M = 0;
 
   for (let i = 0; i < N + 1; i++) {
     sum =
       i +
       String(i)
         .split("")
-        .reduce((acc, num) => {
-          acc += Number(num);
-          return acc;
+        .reduce((acc, curr) => {
+          return (acc += Number(curr));
         }, 0);
+
     if (sum === N) {
-      console.log(i);
+      M = i;
       break;
-    } else if (i === N) console.log(0);
+    } else if (i === N) M = 0;
   }
+
+  console.log(M);
+
   process.exit();
 });
