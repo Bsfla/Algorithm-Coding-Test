@@ -14,6 +14,7 @@ function solution(babbling) {
         }
       }
     });
+
     if (el === babblingStr.join("")) count += 1;
     str = "";
     babblingStr = [];
