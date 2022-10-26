@@ -10,21 +10,14 @@ rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
   const N = input.shift();
-  const seat = input[0];
-  let count = 0;
-  let isCoupleSeat = false;
+  let cupHolder = 1;
 
-  for (let i = 0; i < N; i++) {
-      if (seat[i] === 'L') {
-        count += 0.5;
-        isCoupleSeat = true
-      } else {
-          count += 1;
-          
-      }
-   }
+  input[0].split("").forEach((seat) => {
+    if (seat === "S") cupHolder += 1;
+    else cupHolder += 0.5;
+  });
 
-   if (isCoupleSeat) console.log(count + 1);
-   else console.log(count);
+  cupHolder >= N ? console.log(Number(N)) : console.log(cupHolder);
+
   process.exit();
 });
