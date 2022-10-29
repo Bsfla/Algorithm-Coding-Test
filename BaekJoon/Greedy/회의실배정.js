@@ -9,24 +9,20 @@ const input = [];
 rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
-  let N = parseInt(input.shift());
-  let timeList = [];
+  const N = input.shift();
+  const meetings = input
+    .map((el) => el.split(" ").map(Number))
+    .sort((a, b) => {
+      if (a[1] == b[1]) return a[0] - b[0];
+      return a[1] - b[1];
+    });
   let count = 0;
-  let time = 0;
+  let startTime = 0;
 
-  for (let i = 0; i < input.length; i++) {
-    timeList[i] = input[i].split(" ").map(Number);
-  }
-
-  timeList.sort((a, b) => {
-    if (a[1] === b[1]) return a[0] - b[0];
-    return a[1] - b[1];
-  });
-
-  timeList.map((el) => {
-    if (time <= el[0]) {
+  meetings.forEach((meeting) => {
+    if (meeting[0] >= startTime) {
+      startTime = meeting[1];
       count += 1;
-      time = el[1];
     }
   });
 
