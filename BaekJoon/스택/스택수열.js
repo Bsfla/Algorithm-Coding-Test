@@ -10,33 +10,9 @@ rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
   const N = parseInt(input.shift());
-  const stack = [];
-  const sequence = [];
+  const sequence = input.map(Number);
 
-  let result = [];
-  let count = 1;
-
-  for (let i = 0; i < N; i++) {
-    sequence.push(parseInt(input[i]));
-  };
-
-  while (sequence.length !== 0) {
-    if (sequence[0] === stack[stack.length - 1]) {
-      sequence.shift();
-      stack.pop();
-      result.push('-');
-    } else {
-      stack.push(count);
-      result.push('+');
-      count++;
-    }
-
-    if (sequence[0] < stack[stack.length - 1]) {
-      result = [];
-      result.push('NO');
-      break;
-    }
-  }
-
-  console.log(result.join("\n"));
+  const numbers = Array(N)
+    .fill()
+    .map((_, index) => index + 1);
 });

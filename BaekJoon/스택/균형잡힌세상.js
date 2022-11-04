@@ -9,28 +9,23 @@ const input = [];
 rl.on("line", function (line) {
   input.push(line);
 }).on("close", function () {
-  const result = [];
+  input.forEach((el) => {
+    const result = [];
+    if (el.length === 1 && el[0] === ".") return;
 
-  for (let i = 0; i < input.length; i++) {
-    const stack = [];
-    let cases = input[i];
-
-    if (cases.length === 1 && cases[0] === ".") break;
-
-    for (let j = 0; j < cases.length; j++) {
-      if (cases[j] === "(") stack.push(cases[j]);
-      else if (cases[j] === "[") stack.push(cases[j]);
-      else if (cases[j] === ")") {
-        if (stack[stack.length - 1] === "(") stack.pop();
-        else stack.push(cases[j]);
-      } else if (cases[j] === "]") {
-        if (stack[stack.length - 1] === "[") stack.pop();
-        else stack.push(cases[j]);
+    el.split("").forEach((str) => {
+      if (str === "(" || str === "[") result.push(str);
+      else if (str === ")") {
+        if (result[result.length - 1] === "(") result.pop();
+        else result.push(str);
+      } else if (str === "]") {
+        if (result[result.length - 1] === "[") result.pop();
+        else result.push(str);
       }
-    }
-    if (stack.length === 0) result.push("yes");
-    else result.push("no");
-  }
+    });
 
-  console.log(result.join("\n"));
+    if (el.length === 1) console.log("yes");
+    else if (result.length > 0) console.log("no");
+    else console.log("yes");
+  });
 });
