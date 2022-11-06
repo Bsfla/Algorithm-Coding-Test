@@ -10,6 +10,5 @@ function a() {
     newOption[e.target.name] = 0;
     return newOption;
   }
-  newOption[e.target.name] = parseInt(e.target.value);
-  return newOption;
+  newOption[e.target.name] = parseInt(e.target.v
 }
