@@ -6,23 +6,30 @@
   </head>
   <body>
     <script>
- function solution(sequence, schedule) {
-    const que = sequence.split('');
-    let answer = '';
-    let result = '';
-    
-    for (let i = 0; i < schedule.length; i++)  {
-        if (que.includes(schedule[i])) {
-          if (!schedule[i] === que.shift()) return 'NO'
-        }
-    }
+      function solution(exp1, exp2) {
+        const value1 = exp1.split("+").map((el) => el.split("x^").map(Number));
+        const value2 = exp2.split("+").map((el) => el.split("x^").map(Number));
+        const result = [...value1, ...value2].sort((a, b) => b[1] - a[1]);
 
-    if (que.length) return 'NO';
-    
-    return 'YES'
-    
-}
-    console.log(solution('CBA', 'CABAGE'));
+        for (let i = 0; i < result.length; i++) {
+          if (i !== result.length - 1) {
+            if (result[i][1] === result[i + 1][1]) {
+              const sum = result[i][0] + result[i + 1][0];
+
+              result.splice(i, 2, [sum, result[i][1]]);
+
+              i -= 1;
+            }
+          }
+        }
+
+        return console.log(
+          String(result.map((el) => el.join("x^")).join(" + "))
+        );
+      }
+      const exp1 = "2x^5 + 3x^5 + 2x^5 + 3x^3 + 2x^1";
+      const exp2 = "6x^6 + 4x^4 + 3x^3 + 2x^2";
+      console.log(solution(exp1, exp2));
     </script>
   </body>
 </html>
