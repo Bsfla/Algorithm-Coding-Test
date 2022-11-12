@@ -35,8 +35,8 @@ function solution(progresses, speeds) {
 
       if (progresses[i] >= 100) {
         if (releaseDays[releaseDays.length - 1] >= count) {
-          let frontSkillCount = skillCounts.pop();
-          skillCounts.push(frontSkillCount + 1);
+          const previousSkillCount = skillCounts.pop();
+          skillCounts.push(previousSkillCount + 1);
         } else {
           releaseDays.push(count);
           skillCounts.push(1);
