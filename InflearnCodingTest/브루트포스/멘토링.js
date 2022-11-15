@@ -1,24 +1,29 @@
 function solution(student) {
-    let answer = 0;
-    let n = student[0].length;
-    let cnt = 0;
-    let mentor = 0;
-    let mentie = 0;
-   
-    for(let i = 1; i < n + 1; i++){
-        for(let j = 1; j < n + 1; j++){
-            cnt = 0;
-            for(let k = 0; k < student.length; k++) {
-                mentor = 0;
-                mentie = 0;
-                for(let s = 0; s < n; s++) {
-                    if (student[k][s] === i) mentor = s;
-                    else if (student[k][s] === j) mentie = s;
-                }
-                if(mentor < mentie) cnt++;
-            } 
-            if(cnt === student.length) answer++;
+  const [N, M] = student.shift();
+  let answer = 0;
+
+  for (let i = 1; i < N + 1; i++) {
+    for (let j = 1; j < N + 1; j++) {
+      let count = 0;
+      for (let k = 0; k < M; k++) {
+        let mento = 0;
+        let mentie = 0;
+        for (let s = 0; s < N; s++) {
+          if (student[k][s] === i) mento = s;
+          else if (student[k][s] === j) mentie = s;
         }
+        if (mento < mentie) count += 1;
+      }
+
+      if (count === M) answer += 1;
     }
-    return answer;
+  }
+  return console.log(answer);
 }
+const student = [
+  [4, 3],
+  [3, 4, 1, 2],
+  [4, 3, 2, 1],
+  [3, 1, 4, 2],
+];
+console.log(solution(student));
