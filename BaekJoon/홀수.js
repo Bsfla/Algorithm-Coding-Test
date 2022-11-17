@@ -8,7 +8,7 @@ function a() {
 
   if (e.target.value === "") {
     newOption[e.target.name] = 0;
-    return newOpti
+    return newOpti;
   }
-  newOption[e.target.name] = parseInt(e.target.v
+  newOption[e.target.name] = parseInt(e.target);
 }
