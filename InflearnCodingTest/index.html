@@ -6,37 +6,26 @@
   </head>
   <body>
     <script>
-      function solution(str, word) {
-        const result = [];
-        let distance = 0;
+      function solution(str) {
+        let count = 1;
+        let answer = "";
 
-        for (let value of str) {
-          if (value === word) {
-            distance = 0;
-            result.push(distance);
+        for (let i = 0; i < str.length; i++) {
+          if (str[i] === str[i + 1]) {
+            count++;
           } else {
-            distance++;
-            result.push(distance);
+            answer += str[i];
+            if (count > 1) answer += String(count);
+            count = 1;
           }
         }
 
-        distance = 0;
-
-        for (let i = str.length - 1; i > -1; i--) {
-          if (str[i] === word) {
-            distance = 0;
-          } else {
-            distance++;
-            result[i] = Math.min(result[i], distance);
-          }
-        }
-
-        return result;
+        return answer;
       }
 
-      const str = "teachermode";
-      const word = "e";
-      console.log(solution(str, word));
+      const str = "KKHSSSSSSSE";
+
+      console.log(solution(str));
     </script>
   </body>
 </html>
