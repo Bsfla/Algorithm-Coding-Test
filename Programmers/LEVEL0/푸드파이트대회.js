@@ -10,3 +10,14 @@ function solution(food) {
   }
   return `${answer}0${answer.split("").reverse().join("")}`;
 }
+
+function solution(food) {
+  let answer = "";
+
+  for (let i = 1; i < food.length; i++) {
+    let divide = parseInt(food[i] / 2);
+
+    answer += String(i).repeat(divide);
+  }
+  return `${answer}0${answer.split("").reverse().join("")}`;
+}
