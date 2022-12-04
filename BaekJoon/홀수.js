@@ -10,5 +10,5 @@ function a() {
     newOption[e.target.name]
     return newOp
   }
-  newOption[e.target.name] = parseInt(e.ta
+  newOption[e.target.name] = parseInt(e.
 }
