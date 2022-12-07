@@ -15,6 +15,7 @@ function solution(record) {
 
   return result.map((chatting) => {
     const [action, user] = chatting;
+
     return `${users[user]}${messages[action]}`;
   });
 }
