@@ -6,7 +6,7 @@ function a() {
     return newOption;
   }
 
-  if (e.target.value === "") {
+  if (e.target.value === ""
     newOption[e.target.name];
     return newOp;
   }
