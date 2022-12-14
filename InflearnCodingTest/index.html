@@ -6,24 +6,22 @@
   </head>
   <body>
     <script>
-      function solution(arr) {
-        const answer = arr;
-        let temp = 0;
+      function solution(numbers, start, finish) {
+        return start.reduce((acc, curr, index) => {
+          acc.push(
+            numbers
+              .slice(curr, finish[index] + 1)
+              .reduce((acc, curr) => acc + curr)
+          );
 
-        for (let i = 1; i < answer.length; i++) {
-          for (let j = i; j > -1; j--) {
-            if (answer[j] < 0 && answer[j - 1] > -1) {
-              temp = answer[j - 1];
-              answer[j - 1] = answer[j];
-              answer[j] = temp;
-            } else break;
-          }
-        }
-
-        return answer;
+          return acc;
+        }, []);
       }
+      const numbers = [100, 101, 102, 103, 104];
+      const start = [1, 2];
+      const finish = [2, 4];
 
-      console.log(solution([1, 2, 3, -3, -2, 5, 6, -6]));
+      console.log(solution(numbers, start, finish));
     </script>
   </body>
 </html>
