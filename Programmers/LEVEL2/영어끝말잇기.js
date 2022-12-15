@@ -1,6 +1,7 @@
 function solution(n, words) {
   const stack = [];
   const lastWord = [];
+
   let sequence = 0;
   let count = 0;
 

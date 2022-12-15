@@ -6,22 +6,41 @@
   </head>
   <body>
     <script>
-      function solution(numbers, start, finish) {
-        return start.reduce((acc, curr, index) => {
-          acc.push(
-            numbers
-              .slice(curr, finish[index] + 1)
-              .reduce((acc, curr) => acc + curr)
-          );
+      function solution(S, T) {
+        const startTime = S.split(":").map((el) => Number(el));
+        const finishTime = T.split(":").map((el) => Number(el));
+        let count = 0;
 
-          return acc;
-        }, []);
+        for (let i = startTime[0]; i < finishTime[0] + 1; i++) {
+          const h = i < 10 ? `0${i}` : i;
+          for (let j = startTime[1]; j < finishTime[1] + 1; j++) {
+            const m = j < 10 ? `0${j}` : j;
+            for (let k = startTime[2]; k < finishTime[2] + 1; k++) {
+              const s = k < 10 ? `0${k}` : k;
+              const time = `${h}${m}${s}`;
+
+              if (checkIsTimeValid(time)) count += 1;
+            }
+          }
+        }
+
+        return count;
       }
-      const numbers = [100, 101, 102, 103, 104];
-      const start = [1, 2];
-      const finish = [2, 4];
 
-      console.log(solution(numbers, start, finish));
+      function checkIsTimeValid(time) {
+        const numbers = [];
+
+        for (let number of time) {
+          if (!numbers.includes(number)) numbers.push(number);
+        }
+
+        return numbers.length <= 2 ? true : false;
+      }
+
+      const S = "59:59:00";
+      const T = "59:15:12";
+
+      console.log(solution(S, T));
     </script>
   </body>
 </html>
