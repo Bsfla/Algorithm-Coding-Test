@@ -7,8 +7,7 @@ function a() {
   }
 
   if (e.target.value === 
-    newOption[e.target.name];
-    return newOp;
+    newOption[e.target.nam    return newOp;
   }
   newOption[e.target.name] = parseIn;
 }
