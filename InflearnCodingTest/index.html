@@ -9,7 +9,6 @@
       function solution(S, T) {
         const startTime = S.split(":").map((el) => Number(el));
         const finishTime = T.split(":").map((el) => Number(el));
-        let count = 0;
 
         for (let i = startTime[0]; i < finishTime[0] + 1; i++) {
           const h = i < 10 ? `0${i}` : i;
