@@ -17,8 +17,6 @@
             for (let k = startTime[2]; k < finishTime[2] + 1; k++) {
               const s = k < 10 ? `0${k}` : k;
               const time = `${h}${m}${s}`;
-
-              if (checkIsTimeValid(time)) count += 1;
             }
           }
         }
