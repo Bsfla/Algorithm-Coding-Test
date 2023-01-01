@@ -6,38 +6,32 @@
   </head>
   <body>
     <script>
-      function solution(S, T) {
-        const startTime = S.split(":").map((el) => Number(el));
-        const finishTime = T.split(":").map((el) => Number(el));
+      function solution(timeList) {
+        timeList.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+        let temp = [];
+        let result = Number.MIN_SAFE_INTEGER;
 
-        for (let i = startTime[0]; i < finishTime[0] + 1; i++) {
-          const h = i < 10 ? `0${i}` : i;
-          for (let j = startTime[1]; j < finishTime[1] + 1; j++) {
-            const m = j < 10 ? `0${j}` : j;
-            for (let k = startTime[2]; k < finishTime[2] + 1; k++) {
-              const s = k < 10 ? `0${k}` : k;
-              const time = `${h}${m}${s}`;
-            }
-          }
+        for (time of timeList) {
+          const [start, end] = time;
+
+          temp.push(end);
+
+          temp = temp.filter((el) => start < el);
+
+          result = Math.max(result, temp.length);
         }
 
-        return count;
+        return result;
       }
 
-      function checkIsTimeValid(time) {
-        const numbers = [];
-
-        for (let number of time) {
-          if (!numbers.includes(number)) numbers.push(number);
-        }
-
-        return numbers.length <= 2 ? true : false;
-      }
-
-      const S = "59:59:00";
-      const T = "59:15:12";
-
-      console.log(solution(S, T));
+      const value = [
+        [14, 18],
+        [12, 15],
+        [15, 20],
+        [20, 30],
+        [5, 14],
+      ];
+      console.log(solution(value));
     </script>
   </body>
 </html>
