@@ -6,31 +6,28 @@
   </head>
   <body>
     <script>
-      function solution(M, array) {
-        let left = 0;
-        let sum = 0;
-        let count = 0;
+      function solution(votes) {
+        const candidate = {};
+        let max = Number.MIN_SAFE_INTEGER;
+        let result = "";
 
-        for (let i = 0; i < array.length; i++) {
-          if (array[i] <= M) count += 1;
-          left = i + 1;
-          sum = array[i];
+        for (let vote of votes) {
+          if (vote in candidate) candidate[vote] += 1;
+          else candidate[vote] = 1;
+        }
 
-          while (sum <= M) {
-            sum += array[left];
-
-            if (sum <= M) {
-              left += 1;
-              count += 1;
-            }
+        for (let key in candidate) {
+          if (candidate[key] > max) {
+            max = candidate[key];
+            result = key;
           }
         }
 
-        return count;
+        return result;
       }
 
-      const array = [1, 3, 1, 2, 3];
-      console.log(solution(5, array));
+      const votes = "BACBACCACCBDEDE";
+      console.log(solution(votes));
     </script>
   </body>
 </html>
