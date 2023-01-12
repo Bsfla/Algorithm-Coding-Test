@@ -6,28 +6,26 @@
   </head>
   <body>
     <script>
-      function solution(votes) {
-        const candidate = {};
-        let max = Number.MIN_SAFE_INTEGER;
-        let result = "";
+      function solution(value1, value2) {
+        const obj = {};
 
-        for (let vote of votes) {
-          if (vote in candidate) candidate[vote] += 1;
-          else candidate[vote] = 1;
+        for (let value of value1) {
+          if (value in obj) obj[value] += 1;
+          else obj[value] = 1;
         }
 
-        for (let key in candidate) {
-          if (candidate[key] > max) {
-            max = candidate[key];
-            result = key;
-          }
+        for (let value of value2) {
+          obj[value] -= 1;
         }
 
-        return result;
+        return Object.values(obj).filter((value) => value !== 0).length !== 0
+          ? false
+          : true;
       }
 
-      const votes = "BACBACCACCBDEDE";
-      console.log(solution(votes));
+      const value1 = "AbaAeCe";
+      const value2 = "baeeACA";
+      console.log(solution(value1, value2));
     </script>
   </body>
 </html>
