@@ -6,25 +6,16 @@
   </head>
   <body>
     <script>
-      function solution(value1, value2) {
-        const obj = {};
+      function solution(times) {}
 
-        for (let value of value1) {
-          if (value in obj) obj[value] += 1;
-          else obj[value] = 1;
-        }
-
-        for (let value of value2) {
-          obj[value] -= 1;
-        }
-
-        return Object.values(obj).filter((value) => value !== 0).length !== 0
-          ? false
-          : true;
-      }
-
-      const value2 = "baeeACA";
-      console.log(solution(value1, value2));
+      const times = [
+        [14, 18],
+        [12, 15],
+        [15, 20],
+        [20, 30],
+        [5, 14],
+      ];
+      console.log(solution(times));
     </script>
   </body>
 </html>
