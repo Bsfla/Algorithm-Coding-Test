@@ -6,33 +6,26 @@
   </head>
   <body>
     <script>
-      function solution(N) {
-        let set = Array(N + 1).fill(0);
+      function solution(maxNum, array) {
+        let max = Number.MIN_SAFE_INTEGER;
 
-        function dfs(v) {
-          if (v === N + 1) {
-            console.log(
-              set
-                .map((el, index) => {
-                  if (el == 1) return index;
-                })
-                .filter((el) => el)
-                .join(" ")
-            );
-            return;
+        function dfs(level, sum) {
+          if (sum > maxNum) return;
+          if (level === array.length) {
+            max = Math.max(sum, max);
           } else {
-            set[v] = 1;
-            dfs(v + 1);
-
-            set[v] = 0;
-            dfs(v + 1);
+            dfs(level + 1, sum + array[level]);
+            dfs(level + 1, sum);
           }
         }
 
-        dfs(1);
+        dfs(0, 0);
+        return max;
       }
 
-      console.log(solution(3));
+      const array = [81, 58, 42, 33, 61];
+
+      console.log(solution(259, array));
     </script>
   </body>
 </html>
