@@ -6,32 +6,29 @@
   </head>
   <body>
     <script>
-      function solution(limitTime, array) {
-        let max = Number.MIN_SAFE_INTEGER;
-        let time = 0;
+      function solution(array, M) {
+        let answer = Number.MAX_SAFE_INTEGER;
+        let N = array.length;
 
-        function dfs(level, sum, time) {
-          if (time > limitTime) return;
-          if (level === array.length) {
-            max = Math.max(max, sum);
+        function dfs(level, sum) {
+          if (sum > M) return;
+          if (level > answer) return;
+
+          if (sum === M) {
+            answer = Math.min(answer, level);
           } else {
-            dfs(level + 1, sum + array[level][0], time + array[level][1]);
-            dfs(level + 1, sum, time);
+            for (let i = 0; i < N; i++) {
+              dfs(level + 1, sum + array[i]);
+            }
           }
         }
 
-        dfs(0, 0, 0);
+        dfs(0, 0);
 
-        return max;
+        return answer;
       }
 
-      const array = [
-        [10, 5],
-        [25, 12],
-        [6, 3],
-      ];
-
-      console.log(solution(20, array));
+      console.log(solution([1, 2, 5], 15));
     </script>
   </body>
 </html>
