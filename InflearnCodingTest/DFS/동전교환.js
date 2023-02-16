@@ -19,3 +19,23 @@ function solution(array, M) {
 
   return answer;
 }
+
+function solution(array, M) {
+  let count = 100;
+
+  function dfs(money, level) {
+    if (money > M) {
+      return;
+    } else if (money === M) {
+      count = Math.min(count, level);
+      return;
+    } else {
+      for (let i = 0; i < array.length; i++) {
+        dfs(array[i] + money, level + 1);
+      }
+    }
+  }
+  dfs(0, 0);
+
+  return count;
+}
