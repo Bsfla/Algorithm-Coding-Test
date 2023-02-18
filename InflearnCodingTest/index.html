@@ -6,17 +6,18 @@
   </head>
   <body>
     <script>
-      function solution(n) {
-        let answer;
-        function DFS(n) {
-          if (n === 1) return 1;
-          else return n * DFS(n - 1);
+      function solution(s, v) {
+        function dfs(n, r) {
+          if (n == r || r == 0) return 1;
+          else {
+            return dfs(n - 1, r - 1) + dfs(n - 1, r);
+          }
         }
-        answer = DFS(n);
-        return answer;
+
+        return dfs(s, v);
       }
 
-      console.log(solution(5));
+      console.log(solution(5, 3));
     </script>
   </body>
 </html>
