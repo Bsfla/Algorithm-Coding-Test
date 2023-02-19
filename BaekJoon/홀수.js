@@ -24,8 +24,6 @@ const modeArr = [
 const avg = Math.round(
   numbers.reduce((acc, cur) => acc + cur, 0) / numbers.length
 );
-
-console.log(avg === -0 ? 0 : avg);
-console.log(numbers[Math.floor(numbers.length / 2)]);
+ers.length / 2)]);
 console.log(modeArr[1] || modeArr[0]);
 console.log(numbers[numbers.length - 1] - numbers[0]);
