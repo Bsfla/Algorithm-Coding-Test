@@ -6,51 +6,46 @@
   </head>
   <body>
     <script>
-      function solution(board) {
+      function solution(n, board) {
         let count = 0;
-        let dx = [-1, 0, 1, 0];
-        let dy = [0, 1, 0, -1];
+        let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
+        let dy = [0, 1, 1, 1, 0, -1, -1, -1];
 
-        function DFS(x, y) {
-          if (x === 6 && y === 6) {
-            count += 1;
-            return;
-          } else {
-            for (let i = 0; i < 4; i++) {
-              let nx = x + dx[i];
-              let ny = y + dy[i];
+        function dfs(x, y) {
+          for (let i = 0; i < n + 1; i++) {
+            let nx = x + dx[i];
+            let ny = y + dy[i];
 
-              if (
-                nx >= 0 &&
-                nx <= 6 &&
-                ny >= 0 &&
-                ny <= 6 &&
-                board[nx][ny] !== 1
-              ) {
-                board[nx][ny] = 1;
-                DFS(nx, ny);
-                board[nx][ny] = 0;
-              }
+            if (nx >= 0 && ny >= 0 && nx < n && ny < n && board[nx][ny] === 1) {
+              board[nx][ny] = 0;
+              dfs(nx, ny);
             }
           }
         }
 
-        board[0][0] = 1;
-        DFS(0, 0);
+        for (let i = 0; i < board.length; i++) {
+          for (let j = 0; j < board[i].length; j++) {
+            if (board[i][j] !== 0) {
+              count++;
+              dfs(i, j);
+            }
+          }
+        }
+
         return count;
       }
 
-      let arr = [
-        [0, 0, 0, 0, 0, 0, 0],
-        [0, 1, 1, 1, 1, 1, 0],
-        [0, 0, 0, 1, 0, 0, 0],
-        [1, 1, 0, 1, 0, 1, 1],
-        [1, 1, 0, 0, 0, 0, 1],
+      const array = [
+        [1, 1, 0, 0, 0, 1, 0],
+        [0, 1, 1, 0, 1, 1, 0],
+        [0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 1, 0, 1, 1],
         [1, 1, 0, 1, 1, 0, 0],
-        [1, 0, 0, 0, 0, 0, 0],
+        [1, 0, 0, 0, 1, 0, 0],
+        [1, 0, 1, 0, 1, 0, 0],
       ];
 
-      console.log(solution(arr));
+      console.log(solution(7, array));
     </script>
   </body>
 </html>
