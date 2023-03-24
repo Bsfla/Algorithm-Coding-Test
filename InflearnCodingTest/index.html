@@ -6,46 +6,20 @@
   </head>
   <body>
     <script>
-      function solution(n, board) {
-        let count = 0;
-        let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
-        let dy = [0, 1, 1, 1, 0, -1, -1, -1];
+      function solution(n) {
+        const dy = Array.from({ length: n + 1 }, () => 0);
 
-        function dfs(x, y) {
-          for (let i = 0; i < n + 1; i++) {
-            let nx = x + dx[i];
-            let ny = y + dy[i];
+        dy[1] = 1;
+        dy[2] = 2;
 
-            if (nx >= 0 && ny >= 0 && nx < n && ny < n && board[nx][ny] === 1) {
-              board[nx][ny] = 0;
-              dfs(nx, ny);
-            }
-          }
+        for (let i = 3; i <= n; i++) {
+          dy[i] = dy[i - 2] + dy[i - 1];
         }
 
-        for (let i = 0; i < board.length; i++) {
-          for (let j = 0; j < board[i].length; j++) {
-            if (board[i][j] !== 0) {
-              count++;
-              dfs(i, j);
-            }
-          }
-        }
-
-        return count;
+        return dy[n];
       }
 
-      const array = [
-        [1, 1, 0, 0, 0, 1, 0],
-        [0, 1, 1, 0, 1, 1, 0],
-        [0, 1, 0, 0, 0, 0, 0],
-        [0, 0, 0, 1, 0, 1, 1],
-        [1, 1, 0, 1, 1, 0, 0],
-        [1, 0, 0, 0, 1, 0, 0],
-        [1, 0, 1, 0, 1, 0, 0],
-      ];
-
-      console.log(solution(7, array));
+      console.log(solution(7));
     </script>
   </body>
 </html>
