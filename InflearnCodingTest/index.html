@@ -6,20 +6,28 @@
   </head>
   <body>
     <script>
-      function solution(n) {
-        const dy = Array.from({ length: n + 1 }, () => 0);
+      function solution(n, array) {
+        const dp = Array.from({ length: n }, () => 0);
+        let answer = 0;
+        dp[0] = 1;
 
-        dy[1] = 1;
-        dy[2] = 2;
+        for (let i = 1; i < array.length; i++) {
+          let max = 0;
 
-        for (let i = 3; i < n + 2; i++) {
-          dy[i] = dy[i - 2] + dy[i - 1];
+          for (let j = i; j >= 0; j--) {
+            if (array[j] < array[i] && dp[j] > max) {
+              max = dp[j];
+            }
+          }
+
+          dp[i] = max + 1;
+          answer = Math.max(answer, dp[i]);
         }
 
-        return dy[n + 1];
+        return answer;
       }
 
-      console.log(solution(7));
+      console.log(solution(7, [5, 3, 7, 8, 6, 2, 9, 4]));
     </script>
   </body>
 </html>
