@@ -23,7 +23,5 @@ rl.on("line", function (line) {
     } else if (K === 0) break;
   }
 
-  console.log(count);
-
   process.exit();
 });
