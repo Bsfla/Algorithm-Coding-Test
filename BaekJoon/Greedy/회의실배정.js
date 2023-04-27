@@ -22,7 +22,6 @@ rl.on("line", function (line) {
   meetings.forEach((meeting) => {
     if (meeting[0] >= startTime) {
       startTime = meeting[1];
-      count += 1;
     }
   });
 
