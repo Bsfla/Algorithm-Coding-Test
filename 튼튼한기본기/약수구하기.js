@@ -11,8 +11,6 @@ rl.on("line", function (line) {
 }).on("close", function () {
   const result = [];
 
-  console.log(input);
-
   const N = input[0];
   const K = input[1];
 
